@@ -1,6 +1,6 @@
 # java-full-stack-dev-u14
 UD14 - DDL
----
+--- sql
 DROP DATABASE IF EXISTS academia_de_clases;
 CREATE DATABASE academia_de_clases;
 
