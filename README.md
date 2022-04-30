@@ -1,6 +1,6 @@
 # java-full-stack-dev-u14
 UD14 - DDL
 
-Ejercicio 2 Unidad 12 
 
-[Links Ejercicio 2 Unidad 12](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio2unidad12/README.md "Ejercicio 2 de la unidad 12")
+
+[Ejercicio 2 Unidad 12](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio2unidad12/README.md "Ejercicio 2 de la unidad 12")
