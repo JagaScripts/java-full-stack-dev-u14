@@ -77,4 +77,4 @@ ON DELETE RESTRICT ON UPDATE CASCADE
 );
 ```
 
-![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/academia_de_calses.png)
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio2unidad12/Ejercicio2Academia_de_clases.jpg)
