@@ -2,7 +2,7 @@
 UD14 - DDL
 Ejercicio 2 Unidad 12 
 
-![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/academia_de_calses.jpg)
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/Ejercicio2Academia_de_clases.jpg)
 
 ``` sql
 DROP DATABASE IF EXISTS academia_de_clases;
