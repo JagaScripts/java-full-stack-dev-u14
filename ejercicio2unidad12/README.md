@@ -1,5 +1,8 @@
 # java-full-stack-dev-u14
 UD14 - DDL
+
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio2unidad12/Ejercicio2Academia_de_clases.jpg)
+
 ``` sql
 DROP DATABASE IF EXISTS academia_de_clases;
 CREATE DATABASE academia_de_clases;
@@ -76,5 +79,3 @@ FOREIGN KEY (id_curso) REFERENCES curso(id_curso)
 ON DELETE RESTRICT ON UPDATE CASCADE
 );
 ```
-
-![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/academia_de_calses.png)
