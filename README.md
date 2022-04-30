@@ -1,5 +1,9 @@
 # java-full-stack-dev-u14
 UD14 - DDL
+Ejercicio 2 Unidad 12 
+
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/academia_de_calses.jpg)
+
 ``` sql
 DROP DATABASE IF EXISTS academia_de_clases;
 CREATE DATABASE academia_de_clases;
