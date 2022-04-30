@@ -1,5 +1,10 @@
 # java-full-stack-dev-u14
 UD14 - DDL
+
+Ejercici 1 METEO
+
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_uno/meteo.jpg)
+
 ``` sql
 CREATE DATABASE IF NOT EXISTS meteo;
 USE meteo;
@@ -29,5 +34,3 @@ ON DELETE NO ACTION
 ON UPDATE CASCADE
 )ENGINE=InnoDB;
 ```
-
-![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_uno/meteo.jpg)

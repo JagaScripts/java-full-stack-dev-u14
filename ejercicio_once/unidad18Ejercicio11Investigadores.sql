@@ -1,0 +1,43 @@
+DROP DATABASE IF EXISTS investigadores;
+CREATE DATABASE IF NOT EXISTS investigadores;
+USE investigadores;
+
+DROP TABLE IF EXISTS facultades;
+CREATE TABLE facultades (
+codigo INT,
+nombre NVARCHAR(100) NOT NULL,
+PRIMARY KEY (codigo)
+)ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS investigadores;
+CREATE TABLE investigadores (
+DNI NVARCHAR(8),
+nombre_completo NVARCHAR(255) NOT NULL,
+facultad INT NOT NULL,
+PRIMARY KEY (DNI),
+FOREIGN KEY (facultad) REFERENCES facultades (codigo)
+ON DELETE RESTRICT ON UPDATE CASCADE
+)ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS equipos;
+CREATE TABLE equipos (
+numero_serie CHAR(4),
+nombre NVARCHAR(100) NOT NULL,
+facultad INT NOT NULL,
+PRIMARY KEY (numero_serie),
+FOREIGN KEY (facultad) REFERENCES facultades (codigo)
+ON DELETE RESTRICT ON UPDATE CASCADE
+)ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS reserva;
+CREATE TABLE reserva (
+DNI NVARCHAR(8),
+numero_serie CHAR(4),
+comienzo DATETIME,
+fin DATETIME,
+PRIMARY KEY (DNI , numero_serie),
+FOREIGN KEY (DNI) REFERENCES investigadores (DNI)
+ON DELETE RESTRICT ON UPDATE CASCADE,
+FOREIGN KEY (numero_serie) REFERENCES equipos (numero_serie)
+ON DELETE RESTRICT ON UPDATE CASCADE
+)ENGINE=InnoDB;
