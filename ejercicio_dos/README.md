@@ -6,79 +6,103 @@ Ejercicio 2 biblioteca
 ![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_dos/biblioteca.jpg)
 
 ``` sql
-DROP DATABASE IF EXISTS academia_de_clases;
-CREATE DATABASE academia_de_clases;
+DROP DATABASE IF EXISTS biblio;
+CREATE DATABASE IF NOT EXISTS biblio;
+USE biblio;
 
-USE  academia_de_clases;
+DROP TABLE IF EXISTS editorial;
+CREATE TABLE IF NOT EXISTS editorial (
+claveeditorial SMALLINT,
+nombre VARCHAR (60),
+direccion VARCHAR (60),
+telefono VARCHAR (15),
+PRIMARY KEY (claveeditorial)
+)ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS empresa;
-CREATE TABLE empresa (
-cif CHAR(9) NOT NULL PRIMARY KEY,
-nombre VARCHAR(20) NOT NULL, 
-telefono INT UNSIGNED UNIQUE, 
-direccion VARCHAR(60)
-);  
+DROP TABLE IF EXISTS libro;
+CREATE TABLE IF NOT EXISTS libro (
+clavelibro INT,
+titulo VARCHAR (60),
+idioma VARCHAR (15),
+formato VARCHAR (15),
+claveeditorial SMALLINT,
+PRIMARY KEY (clavelibro),
+KEY (claveeditorial),
+FOREIGN KEY (claveeditorial) REFERENCES editorial (claveeditorial)
+ON DELETE SET NULL ON UPDATE CASCADE
+)ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS alumno;
-CREATE TABLE alumno (
-dni CHAR(9) NOT NULL,
-nombre VARCHAR(20) NOT NULL, 
-telefono INT UNSIGNED UNIQUE, 
-direccion VARCHAR(60),
-edad TINYINT UNSIGNED,
-cif CHAR(9),
-PRIMARY KEY (dni),
-FOREIGN KEY (cif) REFERENCES empresa(cif)
-ON DELETE RESTRICT ON UPDATE CASCADE
-); 
 
-DROP TABLE IF EXISTS profesor;
-CREATE TABLE profesor (
-dni CHAR(9) NOT NULL,
-nombre VARCHAR(20) NOT NULL, 
-apellidos  VARCHAR(20) NOT NULL,
-telefono INT UNSIGNED UNIQUE, 
-direccion VARCHAR(60),
-PRIMARY KEY (dni)
-); 
+DROP TABLE IF EXISTS tema;
+CREATE TABLE IF NOT EXISTS tema (
+clavetema SMALLINT,
+nombre VARCHAR (40),
+PRIMARY KEY (clavetema)
+)ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS programa;
-CREATE TABLE programa (
-id_programa INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-codigo VARCHAR(60) NOT NULL, 
-titulo VARCHAR(60) NOT NULL,
-fecha_inicio DATE,
-fecha_fin DATE,
-duracion DATE AS (fecha_fin - fecha_inicio)
-);
+DROP TABLE IF EXISTS autor;
+CREATE TABLE IF NOT EXISTS autor (
+claveautor INT,
+nombre VARCHAR (60),
+PRIMARY KEY (claveautor)
+)ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS curso;
-CREATE TABLE curso (
-id_curso INT NOT NULL AUTO_INCREMENT,
-id_programa INT NOT NULL,
-dni CHAR(9) NOT NULL,
-codigo VARCHAR(60) NOT NULL, 
-titulo VARCHAR(60) NOT NULL,
-fecha_inicio DATE,
-fecha_fin DATE,
-duracion DATE AS (fecha_fin - fecha_inicio),
-PRIMARY KEY (id_curso),
-FOREIGN KEY (id_programa) REFERENCES programa(id_programa)
+DROP TABLE IF EXISTS ejemplar;
+CREATE TABLE IF NOT EXISTS ejemplar (
+claveejemplar INT,
+clavelibro INT NOT NULL,
+numeroorden SMALLINT NOT NULL,
+edicion SMALLINT,
+ubicacion VARCHAR (15),
+categoria CHAR,
+PRIMARY KEY (claveejemplar),
+FOREIGN KEY (clavelibro) REFERENCES libro (clavelibro)
+ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS socio;
+CREATE TABLE IF NOT EXISTS socio (
+clavesocio INT,
+nombre VARCHAR (60),
+direccion VARCHAR (60),
+telefono VARCHAR (15),
+categoria CHAR,
+PRIMARY KEY (clavesocio)
+)ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS prestamo;
+CREATE TABLE IF NOT EXISTS prestamo (
+clavesocio INT,
+claveejemplar INT,
+numeroorden SMALLINT,
+fecha_prestamo DATE NOT NULL,
+fecha_devolucion DATE DEFAULT NULL,
+notas BLOB,
+FOREIGN KEY (clavesocio) REFERENCES socio (clavesocio)
+ON DELETE SET NULL ON UPDATE CASCADE,
+FOREIGN KEY (claveejemplar) REFERENCES ejemplar (claveejemplar)
+ON DELETE SET NULL ON UPDATE CASCADE
+)ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS trata_sobre;
+CREATE TABLE IF NOT EXISTS trata_sobre (
+clavelibro INT NOT NULL,
+clavetema SMALLINT,
+FOREIGN KEY (clavelibro) REFERENCES libro (clavelibro)
 ON DELETE CASCADE ON UPDATE CASCADE,
-FOREIGN KEY (dni) REFERENCES profesor(dni)
-ON DELETE RESTRICT ON UPDATE CASCADE
-);
+FOREIGN KEY (clavetema) REFERENCES tema (clavetema)
+ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS cursar;
-CREATE TABLE cursar (
-dni CHAR(9) NOT NULL,
-id_curso INT NOT NULL,
-nota TINYINT UNSIGNED NOT NULL,
-PRIMARY KEY (id_curso, dni),
-FOREIGN KEY (dni) REFERENCES alumno(dni)
-ON DELETE RESTRICT ON UPDATE CASCADE,
-FOREIGN KEY (id_curso) REFERENCES curso(id_curso)
-ON DELETE RESTRICT ON UPDATE CASCADE
+DROP TABLE IF EXISTS escrito_por;
+CREATE TABLE IF NOT EXISTS escrito_por (
+clavelibro INT NOT NULL,
+claveautor INT NOT NULL,
+FOREIGN KEY (clavelibro) REFERENCES libro (clavelibro)
+ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (claveautor) REFERENCES autor (claveautor)
+ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB;
 );
 ```
 ![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_dos/biblioteca.png)
