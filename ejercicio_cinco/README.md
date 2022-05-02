@@ -4,7 +4,7 @@ UD14 - DDL
 Ejercicio 4 Empleados
 
 
-![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_cuatro/almacenes.jpg)
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_cinco/almacenes.jpg)
 
 ``` sql
 DROP DATABASE IF EXISTS almacenes;
@@ -32,4 +32,4 @@ ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 ```
 
-![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_cuatro/almacenes.png)
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_cinco/almacenes.png)
