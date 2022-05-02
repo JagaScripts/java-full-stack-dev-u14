@@ -42,7 +42,7 @@ codigo VARCHAR(60) NOT NULL,
 titulo VARCHAR(60) NOT NULL,
 fecha_inicio DATE,
 fecha_fin DATE,
-duracion INT AS (DATE(fecha_fin) - DATE(fecha_inicio)),
+cursos_duracion INT AS (TIMESTAMPDIFF(YEAR, fecha_inicio, fecha_fin)),
 PRIMARY KEY (id_programa)
 );
 
@@ -55,7 +55,7 @@ codigo VARCHAR(60) NOT NULL,
 titulo VARCHAR(60) NOT NULL,
 fecha_inicio DATE,
 fecha_fin DATE,
-duracion DATE AS (fecha_fin - fecha_inicio),
+meses_duracion INT AS (TIMESTAMPDIFF(MONTH, fecha_inicio, fecha_fin)),
 PRIMARY KEY (id_curso),
 FOREIGN KEY (id_programa) REFERENCES programa(id_programa)
 ON DELETE CASCADE ON UPDATE CASCADE,

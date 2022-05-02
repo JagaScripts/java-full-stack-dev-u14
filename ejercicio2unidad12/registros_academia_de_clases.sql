@@ -1,3 +1,4 @@
+USE  academia_de_clases;
 INSERT INTO empresa VALUES
 ('12345678V','T-Systems',346932514,'Reus Calle la piedra 23'),
 ('12345679V','Dapsa',346932515,'Amposta Calle loro S/N'),
@@ -20,6 +21,7 @@ INSERT INTO profesor VALUES
 ('17345688V','Miguel','Alcántara',346932518,'Calle la piedra 08480 L\'Ametlla del Vallès, Barcelona');
 SELECT * FROM profesor;
 INSERT INTO programa VALUES 
-(NULL,'JR09458', 'Fundamentos Ingeniería', DATE(01-05-2022), DATE(30-06-2022), DEFAULT);
+(NULL,'JR09458', 'Fundamentos Ingeniería', '1997-06-21', CURRENT_DATE(),DEFAULT);
+SELECT * FROM programa;
 #DELETE FROM empresa WHERE cif = '12345688V';
 #SELECT * FROM alumno;
