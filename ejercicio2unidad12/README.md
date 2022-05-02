@@ -79,3 +79,4 @@ FOREIGN KEY (id_curso) REFERENCES curso(id_curso)
 ON DELETE RESTRICT ON UPDATE CASCADE
 );
 ```
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio2unidad12/academia_de_calses.png)
