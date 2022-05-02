@@ -4,7 +4,7 @@ UD14 - DDL
 Ejercicio 6 peliculas_y_salas
 
 
-![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_seis/pelicula_y_salas.jpg)
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_nueve/cienteificos.jpg)
 
 ``` sql
 DROP DATABASE IF EXISTS cientificos;
@@ -39,4 +39,4 @@ ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB;
 ```
 
-![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_seis/pelicula_y_salas.png)
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_nueve/cienteificos.png)
