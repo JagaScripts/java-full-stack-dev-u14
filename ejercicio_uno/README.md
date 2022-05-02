@@ -1,7 +1,7 @@
 # java-full-stack-dev-u14
 UD14 - DDL
 
-Ejercici 1 METEO
+Ejercicio 1 METEO
 
 ![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_uno/meteo.jpg)
 
