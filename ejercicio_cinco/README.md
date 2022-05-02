@@ -1,7 +1,7 @@
 # java-full-stack-dev-u14
 UD14 - DDL
 
-Ejercicio 4 Empleados
+Ejercicio 5 Almacenes
 
 
 ![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_cinco/almacenes.jpg)
