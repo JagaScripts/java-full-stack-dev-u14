@@ -1,7 +1,7 @@
 # java-full-stack-dev-u14
 UD14 - DDL
 
-Ejercicio 6 peliculas_y_salas
+Ejercicio 9 Cientificos
 
 
 ![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_nueve/cientificos.jpg)
