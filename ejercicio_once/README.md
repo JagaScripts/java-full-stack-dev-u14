@@ -1,80 +1,55 @@
 # java-full-stack-dev-u14
 UD14 - DDL
+
+Ejercicio 11 Investigadores
+
+
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_once/investigadores.jpg)
+
 ``` sql
-DROP DATABASE IF EXISTS academia_de_clases;
-CREATE DATABASE academia_de_clases;
+DROP DATABASE IF EXISTS investigadores;
+CREATE DATABASE IF NOT EXISTS investigadores;
+USE investigadores;
 
-USE  academia_de_clases;
+DROP TABLE IF EXISTS facultades;
+CREATE TABLE facultades (
+codigo INT,
+nombre NVARCHAR(100) NOT NULL,
+PRIMARY KEY (codigo)
+)ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS empresa;
-CREATE TABLE empresa (
-cif CHAR(9) NOT NULL PRIMARY KEY,
-nombre VARCHAR(20) NOT NULL, 
-telefono INT UNSIGNED UNIQUE, 
-direccion VARCHAR(60)
-);  
-
-DROP TABLE IF EXISTS alumno;
-CREATE TABLE alumno (
-dni CHAR(9) NOT NULL,
-nombre VARCHAR(20) NOT NULL, 
-telefono INT UNSIGNED UNIQUE, 
-direccion VARCHAR(60),
-edad TINYINT UNSIGNED,
-cif CHAR(9),
-PRIMARY KEY (dni),
-FOREIGN KEY (cif) REFERENCES empresa(cif)
+DROP TABLE IF EXISTS investigadores;
+CREATE TABLE investigadores (
+DNI NVARCHAR(8),
+nombre_completo NVARCHAR(255) NOT NULL,
+facultad INT NOT NULL,
+PRIMARY KEY (DNI),
+FOREIGN KEY (facultad) REFERENCES facultades (codigo)
 ON DELETE RESTRICT ON UPDATE CASCADE
-); 
+)ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS profesor;
-CREATE TABLE profesor (
-dni CHAR(9) NOT NULL,
-nombre VARCHAR(20) NOT NULL, 
-apellidos  VARCHAR(20) NOT NULL,
-telefono INT UNSIGNED UNIQUE, 
-direccion VARCHAR(60),
-PRIMARY KEY (dni)
-); 
-
-DROP TABLE IF EXISTS programa;
-CREATE TABLE programa (
-id_programa INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-codigo VARCHAR(60) NOT NULL, 
-titulo VARCHAR(60) NOT NULL,
-fecha_inicio DATE,
-fecha_fin DATE,
-duracion DATE AS (fecha_fin - fecha_inicio)
-);
-
-DROP TABLE IF EXISTS curso;
-CREATE TABLE curso (
-id_curso INT NOT NULL AUTO_INCREMENT,
-id_programa INT NOT NULL,
-dni CHAR(9) NOT NULL,
-codigo VARCHAR(60) NOT NULL, 
-titulo VARCHAR(60) NOT NULL,
-fecha_inicio DATE,
-fecha_fin DATE,
-duracion DATE AS (fecha_fin - fecha_inicio),
-PRIMARY KEY (id_curso),
-FOREIGN KEY (id_programa) REFERENCES programa(id_programa)
-ON DELETE CASCADE ON UPDATE CASCADE,
-FOREIGN KEY (dni) REFERENCES profesor(dni)
+DROP TABLE IF EXISTS equipos;
+CREATE TABLE equipos (
+numero_serie CHAR(4),
+nombre NVARCHAR(100) NOT NULL,
+facultad INT NOT NULL,
+PRIMARY KEY (numero_serie),
+FOREIGN KEY (facultad) REFERENCES facultades (codigo)
 ON DELETE RESTRICT ON UPDATE CASCADE
-);
+)ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS cursar;
-CREATE TABLE cursar (
-dni CHAR(9) NOT NULL,
-id_curso INT NOT NULL,
-nota TINYINT UNSIGNED NOT NULL,
-PRIMARY KEY (id_curso, dni),
-FOREIGN KEY (dni) REFERENCES alumno(dni)
+DROP TABLE IF EXISTS reserva;
+CREATE TABLE reserva (
+DNI NVARCHAR(8),
+numero_serie CHAR(4),
+comienzo DATETIME,
+fin DATETIME,
+PRIMARY KEY (DNI , numero_serie),
+FOREIGN KEY (DNI) REFERENCES investigadores (DNI)
 ON DELETE RESTRICT ON UPDATE CASCADE,
-FOREIGN KEY (id_curso) REFERENCES curso(id_curso)
+FOREIGN KEY (numero_serie) REFERENCES equipos (numero_serie)
 ON DELETE RESTRICT ON UPDATE CASCADE
-);
+)ENGINE=InnoDB;
 ```
 
-![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/academia_de_calses.png)
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_once/investigadores.png)
