@@ -4,7 +4,7 @@ UD14 - DDL
 Ejercicio 6 peliculas_y_salas
 
 
-![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_seis/peliculas_y_salas.jpg)
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_seis/pelicula_y_salas.jpg)
 
 ``` sql
 DROP DATABASE IF EXISTS peliculas_y_salas;
@@ -30,4 +30,4 @@ ON DELETE SET NULL ON UPDATE CASCADE
 )ENGINE=InnoDB;
 ```
 
-![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_seis/peliculas_y_salas.png)
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_seis/pelicula_y_salas.png)
