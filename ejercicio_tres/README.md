@@ -1,5 +1,10 @@
 # java-full-stack-dev-u14
 UD14 - DDL
+
+Ejercicio 3 Tienda de informática
+
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_tres/tiendainformatica.jpg)
+
 ``` sql
 DROP DATABASE IF EXISTS academia_de_clases;
 CREATE DATABASE academia_de_clases;
@@ -77,4 +82,4 @@ ON DELETE RESTRICT ON UPDATE CASCADE
 );
 ```
 
-![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/academia_de_calses.png)
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_tres/tiendainformatica.png)
