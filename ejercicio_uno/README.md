@@ -34,3 +34,4 @@ ON DELETE NO ACTION
 ON UPDATE CASCADE
 )ENGINE=InnoDB;
 ```
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_uno/meteo.png)
