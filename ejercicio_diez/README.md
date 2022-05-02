@@ -1,80 +1,51 @@
 # java-full-stack-dev-u14
 UD14 - DDL
+
+Ejercicio 10 grandes_almacenes
+
+
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_diez/grandes_almacenes.jpg)
+
 ``` sql
-DROP DATABASE IF EXISTS academia_de_clases;
-CREATE DATABASE academia_de_clases;
+DROP DATABASE IF EXISTS grandes_almacenes;
+CREATE DATABASE IF NOT EXISTS grandes_almacenes;
+USE grandes_almacenes;
 
-USE  academia_de_clases;
+DROP TABLE IF EXISTS productos;
+CREATE TABLE productos (
+codigo INT,
+nombre NVARCHAR(100) NOT NULL,
+precio INT NOT NULL,
+PRIMARY KEY (codigo)
+)ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS empresa;
-CREATE TABLE empresa (
-cif CHAR(9) NOT NULL PRIMARY KEY,
-nombre VARCHAR(20) NOT NULL, 
-telefono INT UNSIGNED UNIQUE, 
-direccion VARCHAR(60)
-);  
+DROP TABLE IF EXISTS cajeros;
+CREATE TABLE cajeros (
+codigo INT,
+nombre_completo NVARCHAR(255) NOT NULL,
+PRIMARY KEY (codigo)
+)ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS alumno;
-CREATE TABLE alumno (
-dni CHAR(9) NOT NULL,
-nombre VARCHAR(20) NOT NULL, 
-telefono INT UNSIGNED UNIQUE, 
-direccion VARCHAR(60),
-edad TINYINT UNSIGNED,
-cif CHAR(9),
-PRIMARY KEY (dni),
-FOREIGN KEY (cif) REFERENCES empresa(cif)
-ON DELETE RESTRICT ON UPDATE CASCADE
-); 
+DROP TABLE IF EXISTS maquinas_registradoras;
+CREATE TABLE maquinas_registradoras (
+codigo INT,
+piso INT NOT NULL,
+PRIMARY KEY (codigo)
+)ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS profesor;
-CREATE TABLE profesor (
-dni CHAR(9) NOT NULL,
-nombre VARCHAR(20) NOT NULL, 
-apellidos  VARCHAR(20) NOT NULL,
-telefono INT UNSIGNED UNIQUE, 
-direccion VARCHAR(60),
-PRIMARY KEY (dni)
-); 
-
-DROP TABLE IF EXISTS programa;
-CREATE TABLE programa (
-id_programa INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-codigo VARCHAR(60) NOT NULL, 
-titulo VARCHAR(60) NOT NULL,
-fecha_inicio DATE,
-fecha_fin DATE,
-duracion DATE AS (fecha_fin - fecha_inicio)
-);
-
-DROP TABLE IF EXISTS curso;
-CREATE TABLE curso (
-id_curso INT NOT NULL AUTO_INCREMENT,
-id_programa INT NOT NULL,
-dni CHAR(9) NOT NULL,
-codigo VARCHAR(60) NOT NULL, 
-titulo VARCHAR(60) NOT NULL,
-fecha_inicio DATE,
-fecha_fin DATE,
-duracion DATE AS (fecha_fin - fecha_inicio),
-PRIMARY KEY (id_curso),
-FOREIGN KEY (id_programa) REFERENCES programa(id_programa)
-ON DELETE CASCADE ON UPDATE CASCADE,
-FOREIGN KEY (dni) REFERENCES profesor(dni)
-ON DELETE RESTRICT ON UPDATE CASCADE
-);
-
-DROP TABLE IF EXISTS cursar;
-CREATE TABLE cursar (
-dni CHAR(9) NOT NULL,
-id_curso INT NOT NULL,
-nota TINYINT UNSIGNED NOT NULL,
-PRIMARY KEY (id_curso, dni),
-FOREIGN KEY (dni) REFERENCES alumno(dni)
+DROP TABLE IF EXISTS venta;
+CREATE TABLE venta (
+cajero INT,
+maquina INT,
+producto INT,
+PRIMARY KEY (cajero , maquina, producto),
+FOREIGN KEY (cajero) REFERENCES cajeros (codigo)
 ON DELETE RESTRICT ON UPDATE CASCADE,
-FOREIGN KEY (id_curso) REFERENCES curso(id_curso)
+FOREIGN KEY (maquina) REFERENCES maquinas_registradoras (codigo)
+ON DELETE RESTRICT ON UPDATE CASCADE,
+FOREIGN KEY (producto) REFERENCES productos (codigo)
 ON DELETE RESTRICT ON UPDATE CASCADE
-);
+)ENGINE=InnoDB;
 ```
 
-![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/academia_de_calses.png)
+![image](https://github.com/JagaScripts/java-full-stack-dev-u14/blob/master/ejercicio_diez/grandes_almacenes.png)
